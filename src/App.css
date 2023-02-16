@@ -1,38 +1,98 @@
-.App {
+/* App.css */
+
+/* Body style */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Header style */
+h1 {
   text-align: center;
+  padding: 1rem;
+  background-color: #2e2e2e;
+  color: #ffffff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Navigation style */
+.nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nav-btn {
+  background-color: #2e2e2e;
+  color: #ffffff;
+  border: none;
+  margin: 0 1rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav-btn:hover {
+  background-color: #505050;
+}
+
+/* Shops container style */
+.shops {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1rem;
+  margin: 2rem;
+}
+
+/* Individual shop style */
+.shop {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  padding: 1rem;
+  transition: all 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.shop:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Shop thumbnail style */
+.thumbnail {
+  margin: 0;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+/* Shop text style */
+.shop-text {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.booth-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.category {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #2e2e2e;
+  margin-bottom: 0.5rem;
+}
+
+.owner-name {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.booth-description {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
