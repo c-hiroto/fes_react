@@ -37,6 +37,7 @@ const App = () => {
   //カテゴリ名が押された時の処理
   const onClickCategory = (event) => {
     // カテゴリが変わるたびにloadIndexとisEmptyとpageTopButtonを初期値に戻し、カテゴリを設定
+    setInputValue("");
     setLoadIndex(10);
     setIsEmpty(false);
     setPageTopButton(false);
@@ -52,6 +53,7 @@ const App = () => {
   const handleInputChange = (event) => {
     setInputValue(event.target.value)
     search(event.target.value)
+    setSelectedCategory("");
   }
 
   // 検索欄に入力された文字列をvalueで受け取り、それを用いて絞り込み
