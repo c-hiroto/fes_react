@@ -36,17 +36,16 @@ const App = () => {
 
   //カテゴリ名が押された時の処理
   const onClickCategory = (event) => {
+    // カテゴリが変わるたびにloadIndexとisEmptyとpageTopButtonを初期値に戻し、カテゴリを設定
+    setLoadIndex(10);
+    setIsEmpty(false);
+    setPageTopButton(false);
+    setSelectedCategory(event.target.dataset.nav);
     if (event.target.dataset.nav === 'ブース一覧') {
       return setShops(allShops);
     }
     const filteredShops = allShops.filter((shop) => shop.category === event.target.dataset.nav);
     setShops(filteredShops);
-
-    // カテゴリが変わるたびにloadIndexとisEmptyとpageTopButtonを初期値に戻す
-    setSelectedCategory(event.target.dataset.nav);
-    setLoadIndex(10);
-    setIsEmpty(false);
-    setPageTopButton(false);
   };
 
   //入力された文字列を受け、search関数を呼び出す
