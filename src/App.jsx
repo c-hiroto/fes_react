@@ -22,7 +22,7 @@ const App = () => {
 
   const fetcher = (url) => fetch(url).then((res) => res.json());
   const { data: shops, error } = useSWR(
-    `https://api.sssapi.app/vaLWfXP0I6Gmgpdp2Wbd3?page=${pageIndex}&page_size=${PAGE_SIZE}&filter__category__contains=${
+    `https://api.sssapi.app/hoge?page=${pageIndex}&page_size=${PAGE_SIZE}&filter__category__contains=${
       selectedCategory === "ブース一覧" ? "" : selectedCategory
     }&filter__name__contains=${inputValue}`,
     fetcher,
