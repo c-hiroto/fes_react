@@ -129,16 +129,17 @@ h3 {
 }
 .page-top {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 50px;
+  right: 30px;
 }
 
 .page-top button {
   background-color: #4285f4;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
   font-size: 16px;
   cursor: pointer;
 }
