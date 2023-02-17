@@ -11,7 +11,7 @@ const App = () => {
   //表示するブースの数
   const [loadIndex, setLoadIndex] = useState(10);
   //これ以上表示するものがないかどうか
-  const [isEmpty, setIsEmpty] = useState(false);
+  const [hasNext, setHasNext] = useState(false);
   //ページトップへスクロールするボタンの表示
   const [pageTopButton, setPageTopButton] = useState(false);
   const [pageIndex, setPageIndex] = useState(1);
@@ -31,10 +31,10 @@ const App = () => {
 
   //カテゴリ名が押された時の処理
   const onClickCategory = (event) => {
-    // カテゴリが変わるたびにloadIndexとisEmptyとpageTopButtonを初期値に戻し、カテゴリを設定
+    // カテゴリが変わるたびにloadIndexとhasNextとpageTopButtonを初期値に戻し、カテゴリを設定
     setInputValue("");
     setLoadIndex(10);
-    setIsEmpty(false);
+    setHasNext(false);
     setPageTopButton(false);
     setSelectedCategory(event.target.dataset.nav);
   };
@@ -64,7 +64,7 @@ const App = () => {
   const displayMore = () => {
     setPageIndex(pageIndex + 1);
     if (loadIndex >= shops.length - 10) {
-      setIsEmpty(true);
+      setHasNext(true);
     }
   };
 
@@ -158,7 +158,7 @@ const App = () => {
           {shops.length < loadIndex ? (
             <button disabled={true}>さらに表示</button>
           ) : (
-            <button disabled={isEmpty ? true : false} onClick={displayMore}>
+            <button disabled={hasNext ? true : false} onClick={displayMore}>
               さらに表示
             </button>
           )}
