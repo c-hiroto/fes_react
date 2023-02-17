@@ -33,7 +33,7 @@ const App = () => {
   const onClickCategory = (event) => {
     // カテゴリが変わるたびにloadIndexとhasNextとpageTopButtonを初期値に戻し、カテゴリを設定
     setInputValue("");
-    setLoadIndex(10);
+    setPageIndex(1);
     setHasNext(false);
     setPageTopButton(false);
     setSelectedCategory(event.target.dataset.nav);
@@ -158,7 +158,7 @@ const App = () => {
           {shops.length < loadIndex ? (
             <button disabled={true}>さらに表示</button>
           ) : (
-            <button disabled={hasNext ? true : false} onClick={displayMore}>
+            <button disabled={hasNext} onClick={displayMore}>
               さらに表示
             </button>
           )}
