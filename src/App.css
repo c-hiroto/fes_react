@@ -1,98 +1,148 @@
-/* App.css */
-
-/* Body style */
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background-color: #f5f5f5;
 }
 
-/* Header style */
+/* ヘッダー */
 h1 {
-  text-align: center;
+  margin: 0;
   padding: 1rem;
-  background-color: #2e2e2e;
-  color: #ffffff;
+  background-color: #0f4c81;
+  color: #fff;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
-/* Navigation style */
+h2 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
+/* 検索フォーム */
+.search {
+  margin: 1rem;
+}
+
+.input-box {
+  display: block;
+  margin: 0.5rem auto;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  width: 90%;
+  max-width: 30rem;
+  font-size: 1rem;
+}
+
+/* カテゴリボタン */
 .nav {
   display: flex;
-  justify-content: center;
-  margin-top: 2rem;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 1rem;
 }
 
 .nav-btn {
-  background-color: #2e2e2e;
-  color: #ffffff;
-  border: none;
-  margin: 0 1rem;
-  padding: 1rem 2rem;
+  display: block;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  width: 40%;
+  max-width: 10rem;
+  background-color: #fff;
+  font-size: 1rem;
+  text-align: center;
+  color: #0f4c81;
   cursor: pointer;
 }
 
-.nav-btn:hover {
-  background-color: #505050;
-}
-
-/* Shops container style */
+/* ショップリスト */
 .shops {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 1rem;
-  margin: 2rem;
+  margin: 1rem;
 }
 
-/* Individual shop style */
 .shop {
+  position: relative;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
-  border: 1px solid #dcdcdc;
-  border-radius: 5px;
-  padding: 1rem;
-  transition: all 0.3s ease;
-}
-
-.shop:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Shop thumbnail style */
-.thumbnail {
-  margin: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  overflow: hidden;
   text-align: center;
-  font-size: 1.5rem;
 }
 
-/* Shop text style */
-.shop-text {
+.thumbnail {
+  width: 100%;
+  height: 10rem;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  color: #999;
+  background-color: #f5f5f5;
   display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.shop-text {
+  width: 100%;
+  padding: 1rem;
+  text-align: left;
 }
 
 .booth-name {
-  font-size: 1.5rem;
+  margin: 0;
+  font-size: 1.25rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
 }
 
 .category {
+  margin: 0.5rem 0;
   font-size: 1rem;
-  font-weight: bold;
-  color: #2e2e2e;
-  margin-bottom: 0.5rem;
+  font-style: italic;
+  color: #0f4c81;
 }
 
 .owner-name {
+  margin: 0.5rem 0;
   font-size: 1rem;
-  margin-bottom: 0.5rem;
 }
 
 .booth-description {
+  margin: 0.5rem 0;
   font-size: 1rem;
-  margin-bottom: 0.5rem;
+}
+.page-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.page-top button {
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.page-top button:hover {
+  background-color: #3367d6;
 }
