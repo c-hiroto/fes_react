@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 16px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #f5f5f5;
 }
 
@@ -127,24 +127,4 @@ h3 {
 .booth-description {
   margin: 0.5rem 0;
   font-size: 1rem;
-}
-.page-top {
-  position: fixed;
-  bottom: 50px;
-  right: 30px;
-}
-
-.page-top button {
-  background-color: #0f4c81;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.page-top button:hover {
-  background-color: #3367d6;
 }
