@@ -34,8 +34,8 @@ const App = () => {
   const handleInputChange = (event) => {
     //入力された文字列をinputValueに保持
     setInputValue(event.target.value);
-    //カテゴリをnullにすることで、カテゴリの表示を無くす
-    setSelectedCategory(null);
+    //カテゴリをリセットする
+    setSelectedCategory("");
   };
 
   //さらに読み込むブースがあるかどうかを管理
