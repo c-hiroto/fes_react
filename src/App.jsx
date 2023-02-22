@@ -27,11 +27,9 @@ const App = () => {
     },
   );
 
-  console.log(shops);
-
   //カテゴリ名が押された時の処理
   const onClickCategory = (event) => {
-    // カテゴリが変わるたびにInputValueとloadIndexを初期値に戻し、カテゴリを設定
+    // カテゴリが変わるたびにinputValueとloadIndexを初期値に戻し、カテゴリを設定
     inputValue = "";
     setLoadIndex(10);
     setSelectedCategory(event.target.dataset.nav);
