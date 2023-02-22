@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { BackToTopButton } from "./components/BackToTopButton";
+import ShopsAndMoreButton from "./components/ShopsAndMoreButton";
 import useSWR from "swr";
 import "./App.css";
 
 const App = () => {
   //選択されているカテゴリの情報
   const [selectedCategory, setSelectedCategory] = useState("全てのブース");
-  //検索のワードの情報
-  const [inputValue, setInputValue] = useState("");
+  //入力されたワードの情報
+  let inputValue;
+  //検索ワードの情報
+  const [searchWord, setSearchWord] = useState("");
   //表示できるブースの最大数
   const [loadIndex, setLoadIndex] = useState(10);
   //これより表示するものがあるかどうか
@@ -15,25 +18,35 @@ const App = () => {
 
   const fetcher = (url) => fetch(url).then((res) => res.json());
   const { data: shops, error } = useSWR(
-    `https://api.sssapi.app/vaLWfXP0I6Gmgpdp2Wbd3?filter__category__contains=${
+    `${process.env.REACT_APP_FES_SHOPS}?filter__category__contains=${
       selectedCategory === "全てのブース" ? "" : selectedCategory
-    }&filter__description__contains=${inputValue}`,
+    }&filter__search__contains=${searchWord}`,
     fetcher,
-    { fallbackData: [] },
+    {
+      fallbackData: [],
+    },
   );
+
+  console.log(shops);
 
   //カテゴリ名が押された時の処理
   const onClickCategory = (event) => {
-    // カテゴリが変わるたびにInputValuとloadIndexを初期値に戻し、カテゴリを設定
-    setInputValue("");
+    // カテゴリが変わるたびにInputValueとloadIndexを初期値に戻し、カテゴリを設定
+    inputValue = "";
     setLoadIndex(10);
     setSelectedCategory(event.target.dataset.nav);
   };
 
-  //入力された文字列を受け、search関数を呼び出す
+  //入力された文字列を受け、inputValueに保存する
   const handleInputChange = (event) => {
     //入力された文字列をinputValueに保持
-    setInputValue(event.target.value);
+    inputValue = event.target.value;
+  };
+
+  //keywordに基づき検索
+  const keywordSearch = (event) => {
+    event.preventDefault();
+    setSearchWord(inputValue);
     //カテゴリをリセットする
     setSelectedCategory("");
   };
@@ -58,6 +71,7 @@ const App = () => {
           onChange={handleInputChange}
           placeholder="キーワードを入力してください"
         />
+        <button onClick={keywordSearch}>検索</button>
       </div>
 
       <h3>または</h3>
@@ -94,34 +108,13 @@ const App = () => {
           </button>
         </div>
 
-        <div className="shops">
-          <div>{selectedCategory}</div>
-          <div>全{shops.length}件</div>
-          {shops.slice(0, loadIndex).map((shop) => {
-            return (
-              <div key={shop.id} className="shop" data-category={shop.category_num}>
-                <p src="#" className="thumbnail">
-                  サムネイルがここに入ります<br></br>
-                  {shop.thumbnail_url}
-                </p>
-                <div className="shop-text">
-                  <div className="booth-name">{shop.booth_name}</div>
-                  <div className="category">{shop.category}</div>
-                  <div className="owner-name">{shop.owner_name}</div>
-                  <div className="booth-description">{shop.description}</div>
-                </div>
-              </div>
-            );
-          })}
-
-          {shops.length < loadIndex ? (
-            <button disabled={true}>さらに表示</button>
-          ) : (
-            <button disabled={!hasNext} onClick={displayMore}>
-              さらに表示
-            </button>
-          )}
-        </div>
+        <ShopsAndMoreButton
+          shops={shops}
+          selectedCategory={selectedCategory}
+          loadIndex={loadIndex}
+          hasNext={hasNext}
+          displayMore={displayMore}
+        />
       </div>
       <BackToTopButton />
     </>
