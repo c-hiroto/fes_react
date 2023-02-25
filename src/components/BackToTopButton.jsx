@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./BackToTopButton.css";
 
-export function BackToTopButton() {
+const BackToTopButton = () => {
   //ページトップへスクロールするボタンの表示
   const [pageTopButton, setPageTopButton] = useState(false);
   //スクロール量の定義
@@ -36,4 +36,6 @@ export function BackToTopButton() {
       )}
     </>
   );
-}
+};
+
+export default BackToTopButton;

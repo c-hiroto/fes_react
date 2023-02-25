@@ -19,3 +19,32 @@
   overflow: hidden;
   text-align: center;
 }
+
+.shop-text {
+  width: 100%;
+  padding: 1rem;
+  text-align: left;
+}
+
+.booth-name {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.category {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-style: italic;
+  color: #0f4c81;
+}
+
+.owner-name {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.booth-description {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
