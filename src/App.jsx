@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { BackToTopButton } from "./components/BackToTopButton";
-import ShopsAndMoreButton from "./components/ShopsAndMoreButton";
 import useSWR from "swr";
+import BackToTopButton from "./components/BackToTopButton";
+import ShopsAndMoreButton from "./components/ShopsAndMoreButton";
+import SearchBox from "./components/SearchBox";
+import Nav from "./components/Nav";
 import "./App.css";
 
 const App = () => {
   //選択されているカテゴリの情報
   const [selectedCategory, setSelectedCategory] = useState("全てのブース");
   //入力されたワードの情報
-  let inputValue;
+  const [inputValue, setInputValue] = useState("");
   //検索ワードの情報
   const [searchWord, setSearchWord] = useState("");
   //表示できるブースの最大数
@@ -29,8 +31,9 @@ const App = () => {
 
   //カテゴリ名が押された時の処理
   const onClickCategory = (event) => {
-    // カテゴリが変わるたびにinputValueとloadIndexを初期値に戻し、カテゴリを設定
-    inputValue = "";
+    // カテゴリが変わるたびにinputValueとsearchWordとloadIndexを初期値に戻し、カテゴリを設定
+    setSearchWord("");
+    setInputValue("");
     setLoadIndex(10);
     setSelectedCategory(event.target.dataset.nav);
   };
@@ -38,12 +41,13 @@ const App = () => {
   //入力された文字列を受け、inputValueに保存する
   const handleInputChange = (event) => {
     //入力された文字列をinputValueに保持
-    inputValue = event.target.value;
+    setInputValue(event.target.value);
   };
 
   //keywordに基づき検索
   const keywordSearch = (event) => {
     event.preventDefault();
+    //serachWordが変更される。useSWRのkeyが変更されるので、fetchが行われデータを取得。
     setSearchWord(inputValue);
     //カテゴリをリセットする
     setSelectedCategory("");
@@ -51,9 +55,10 @@ const App = () => {
 
   //さらに読み込むブースがあるかどうかを管理
   const displayMore = () => {
+    //読み込めるブースの数を10追加する。
     setLoadIndex(loadIndex + 10);
+    //もし、これ以上表示するブースがない場合
     if (loadIndex + 10 >= shops.length) {
-      //これ以上表示するブースがない場合
       setHasNext(false);
     }
   };
@@ -61,51 +66,18 @@ const App = () => {
   return (
     <>
       <h1 className="">リベ大フェス2023!!!</h1>
-      <div className="search">
-        <h2>キーワードから絞り込み</h2>
-        <input
-          className="input-box"
-          value={inputValue}
-          onChange={handleInputChange}
-          placeholder="キーワードを入力してください"
-        />
-        <button onClick={keywordSearch}>検索</button>
-      </div>
+
+      <SearchBox
+        inputValue={inputValue}
+        handleInputChange={handleInputChange}
+        keywordSearch={keywordSearch}
+      />
 
       <h3>または</h3>
       <h2>カテゴリから絞り込み</h2>
 
       <div className="contents">
-        <div className="nav">
-          <button className="nav-btn" onClick={onClickCategory} data-nav="全てのブース">
-            全てのブース
-          </button>
-          <button className="nav-btn" onClick={onClickCategory} data-nav="飲食">
-            飲食
-          </button>
-          <button className="nav-btn" onClick={onClickCategory} data-nav="物販">
-            物販
-          </button>
-          <button className="nav-btn" onClick={onClickCategory} data-nav="貯める力">
-            貯める力
-          </button>
-          <button className="nav-btn" onClick={onClickCategory} data-nav="稼ぐ力">
-            稼ぐ力
-          </button>
-          <button className="nav-btn" onClick={onClickCategory} data-nav="増やす力">
-            増やす力
-          </button>
-          <button className="nav-btn" onClick={onClickCategory} data-nav="守る力">
-            守る力
-          </button>
-          <button className="nav-btn" onClick={onClickCategory} data-nav="使う力">
-            使う力
-          </button>
-          <button className="nav-btn" onClick={onClickCategory} data-nav="その他">
-            その他
-          </button>
-        </div>
-
+        <Nav onClickCategory={onClickCategory} />
         <ShopsAndMoreButton
           shops={shops}
           selectedCategory={selectedCategory}
@@ -114,6 +86,7 @@ const App = () => {
           displayMore={displayMore}
         />
       </div>
+
       <BackToTopButton />
     </>
   );
