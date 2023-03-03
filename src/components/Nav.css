@@ -1,0 +1,22 @@
+/* カテゴリボタン */
+.nav {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 1rem;
+}
+
+.nav-btn {
+  display: block;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  width: 40%;
+  max-width: 10rem;
+  background-color: #fff;
+  font-size: 1rem;
+  text-align: center;
+  color: #0f4c81;
+  cursor: pointer;
+}

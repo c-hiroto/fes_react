@@ -1,0 +1,16 @@
+/* 検索フォーム */
+.search {
+  margin: 1rem;
+}
+
+.input-box {
+  display: block;
+  margin: 0.5rem auto;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  width: 90%;
+  max-width: 30rem;
+  font-size: 1rem;
+  text-align: center;
+}
